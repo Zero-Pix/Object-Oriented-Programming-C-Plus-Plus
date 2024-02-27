@@ -1,6 +1,6 @@
 
 
-
+// This is lab 1 assignment //
 
 #include <iostream>
 #include <cstdio>
