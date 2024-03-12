@@ -1,6 +1,6 @@
 //Lab2_num_obj.cpp
 /***
- * {Short Description of the lab}
+ * Compile and execute your code. If you forgot how to do this, refer to Lab 1/Compile and Execute.}
  ***/
 
 #include <iostream>
