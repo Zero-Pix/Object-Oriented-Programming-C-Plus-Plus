@@ -1,4 +1,4 @@
-#include <iostream>
+#include <string>
 #include "RPG.h"
 
 RPG::RPG() : name("npc"), strength(10), health(10), defense(10), type("warrior") {
@@ -49,6 +49,32 @@ void RPG::setSkills() {
     }
 }
 
-void RPG::printAction(string skill, RPG opponent) {
-     Printf("%s used %s on %s/n", name.c_str(), skill.c_str(), opponent.getName().c_str());
+void RPG::printAction(std::string skill, RPG opponent) {
+    printf("%s used %s on %s/n", name.c_str(), skill.c_str(), opponent.getName().c_str());
+
+}
+
+void RPG::attack(RPG * opponent){
+    int health = (*opponent).getHealth();
+    
+    int defense = (*opponent).getDefense();
+    int new_health = health-(strength - defense);
+    (* opponent).updateHealth(new_health);
+}
+
+void RPG::useSkill(RPG * opponent){
+    for(int i = 0; i < SKILL_SIZE; i++){
+        printf("Skill %i: %s\n", i, skills[i].c_str());
+    }
+
+    int chosen_skill_index;
+    printf("\n Choose a skill to use: Enter 0,1 (starting as wizard than npc) \n");
+    cin >> chosen_skill_index;
+
+    string chosen_skill= skills[chosen_skill_index];
+
+    printAction(chosen_skill, (*opponent));
+
+    attack(opponent);
+
 }

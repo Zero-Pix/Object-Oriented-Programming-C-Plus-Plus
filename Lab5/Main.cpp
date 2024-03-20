@@ -3,27 +3,42 @@
 
 using namespace std;
 
-int main()
-{
-    RPG p1 = RPG("Wiz", 70, 45, 15, "mage"); 
-    RPG p2 = RPG(); 
-
+//
+void displayStats(RPG p1, RPG p2){
     cout << p1.getName() << " current stats" << endl;
     cout << "Health: " << p1.getHealth() << "\tStrength: " << p1.getStrength() << "\tDefense: " << p1.getDefense() << endl; 
 
     cout << p2.getName() << " current stats" << endl; 
     cout << "Health: " << p2.getHealth() << "\tStrength: " << p2.getStrength() << "\tDefense: " << p2.getDefense() << endl; 
+}
 
-    // Show an update for health
-    p1.updateHealth(0);
-    p2.updateHealth(0);
-    
-    cout << p1.getName() << "'s new health: " << p1.getHealth() << endl; 
-    cout << p2.getName() << "'s new health: " << p2.getHealth() << endl; 
-
-    // Show who still is alive
+void displayEnd(RPG p1, RPG p2){
     cout << p1.getName() << " is alive: " << (p1.isAlive() ? "true" : "false") << endl; 
     cout << p2.getName() << " is alive: " << (p2.isAlive() ? "true" : "false") << endl; 
-
-    return 0; 
+    
 }
+
+void gameLoop( RPG * p1, RPG*p2){
+    while (p1->isAlive() && p2->isAlive()) {
+        displayStats(*p1,*p2);
+        (*p1).useSkill(p2);
+     printf("\n--------------------------------\n");
+     displayStats(*p2,*p1);
+        (*p2).useSkill(p1);
+     printf("\n--------------------------------\n");
+    }
+}
+
+int main(){
+    RPG p1 = RPG("Wiz", 70, 45, 15, "mage");
+    RPG p2 = RPG();
+
+    gameLoop(&p1, &p2);
+
+    displayEnd(p1, p2);
+
+    return 0;
+}
+
+
+

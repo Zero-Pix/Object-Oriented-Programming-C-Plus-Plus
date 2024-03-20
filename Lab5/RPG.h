@@ -1,22 +1,25 @@
 #ifndef RPG_H_
 #define RPG_H_
 
+#include <iostream>
 #include <string>
 #include <array>
+using namespace std;
+
 
 const int SKILL_SIZE = 2;
 
 class RPG {
 public:
     RPG();
-    RPG(std::string name, int health, int strength, int defence, std::string type);
+    RPG(std::string name, int health, int strength, int defense, std::string type);
 
     // Member functions
     void setSkills();
-    void printAction(std::string action, RPG target);
-    void updateHealth(int healthChange);
-    void attack(RPG* target);
-    void useSkill(RPG* target);
+    void printAction(std::string, RPG );
+    void updateHealth(int );
+    void attack(RPG*);
+    void useSkill(RPG*);
     bool isAlive() const;
     std::string getName() const;
     int getHealth() const;
