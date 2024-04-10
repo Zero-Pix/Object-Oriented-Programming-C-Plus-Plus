@@ -3,7 +3,7 @@
 
 using namespace std;
 
-//
+
 void displayStats(RPG p1, RPG p2){
     cout << p1.getName() << " current stats" << endl;
     cout << "Health: " << p1.getHealth() << "\tStrength: " << p1.getStrength() << "\tDefense: " << p1.getDefense() << endl; 
@@ -29,6 +29,8 @@ void gameLoop( RPG * p1, RPG*p2){
     }
 }
 
+
+
 int main(){
     RPG p1 = RPG("Wiz", 70, 45, 15, "mage");
     RPG p2 = RPG();
@@ -36,9 +38,11 @@ int main(){
     gameLoop(&p1, &p2);
 
     displayEnd(p1, p2);
+    if (p1.isAlive()) {
+        cout << p1.getName() << " won! Congrats! " << endl;
+    } else {
+        cout << p2.getName() << " won! Congrats! " << endl;
+    }
 
     return 0;
 }
-
-
-
