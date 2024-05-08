@@ -43,7 +43,7 @@ int binarySearch(const vector<int>& v, int start, int end, int elem) {
 }
 
 int main() {
-    vector<int> v;
+    vector<int> v;x
     vecGen("10000_numbers.csv", v);
 
     vector<int> elem_to_find;
